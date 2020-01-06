@@ -1,4 +1,4 @@
-package com.example.music_player;
+package com.example.music_player.Music;
 
 public class Music {
     private String title;

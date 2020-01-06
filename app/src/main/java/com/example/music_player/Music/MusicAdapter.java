@@ -1,10 +1,13 @@
-package com.example.music_player;
+package com.example.music_player.Music;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.music_player.R;
+
 import java.util.List;
 
 public class MusicAdapter extends BaseAdapter {

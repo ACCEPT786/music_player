@@ -15,10 +15,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SeekBar;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.music_player.Music.Music;
+import com.example.music_player.Music.MusicAdapter;
+import com.example.music_player.Music.MusicUtil;
+
+public class MainActivity extends AppCompatActivity{
     private static final String TAG = "MainActivity";
     private List<Music> lists;
     private MusicAdapter adapter;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Timer timer = new Timer();
     private int index = 0;
     private Button search;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

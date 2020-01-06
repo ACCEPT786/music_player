@@ -18,6 +18,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import android.media.MediaPlayer;
 
+import com.example.music_player.Music.Music;
+import com.example.music_player.Music.MusicAdapter;
+import com.example.music_player.Music.MusicUtil;
+
 public class search_view extends AppCompatActivity {
     private List<Music> lists;
     private TextView tv_main_title;

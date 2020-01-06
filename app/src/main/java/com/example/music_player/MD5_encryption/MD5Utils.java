@@ -1,4 +1,4 @@
-package com.example.music_player;
+package com.example.music_player.MD5_encryption;
 
 import java.security.MessageDigest;
 

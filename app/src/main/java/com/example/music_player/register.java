@@ -15,6 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.music_player.MD5_encryption.MD5Utils;
+
 public class register extends AppCompatActivity {
     private TextView tv_main_title;
     private TextView tv_back;
