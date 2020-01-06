@@ -21,7 +21,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 public class activity_login extends AppCompatActivity {
     private TextView tv_main_title;
     private TextView tv_back;
-    private Button btn_login, tv_register, tv_find_psw, tv_test;
+    private Button btn_login, tv_register, tv_find_psw;
     private String userName,psw,spPsw;
     private EditText et_user_name,et_psw;
     @Override
@@ -46,7 +46,6 @@ public class activity_login extends AppCompatActivity {
 
         tv_register = findViewById(R.id.tv_register);
         tv_find_psw = findViewById(R.id.tv_find_psw);
-        tv_test = findViewById(R.id.tv_test);
         btn_login = findViewById(R.id.btn_login);
         et_user_name = findViewById(R.id.et_user_name);
         et_psw = findViewById(R.id.et_psw);
@@ -59,9 +58,6 @@ public class activity_login extends AppCompatActivity {
 
         tv_find_psw.setOnClickListener(view ->
             startActivity(new Intent(com.example.music_player.activity_login.this, find_psw_back.class)));
-
-        tv_test.setOnClickListener(view ->
-            startActivity(new Intent(com.example.music_player.activity_login.this, Right_drawer.class)));
 
         btn_login.setOnClickListener(view ->{
             userName = et_user_name.getText().toString().trim();

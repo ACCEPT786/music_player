@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/shape_color2"
     android:id="@+id/DrawerLayout">
     <LinearLayout
         android:id="@+id/fragment_layout"
@@ -10,13 +11,37 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/more"
-            android:textColor="@color/colorWhite"
-            android:background="@color/transparent"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/more"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical|start"
+                android:textColor="@color/colorWhite"
+                android:background="@color/transparent"
+                style="?android:attr/borderlessButtonStyle"/>
+
+            <Button
+                android:id="@+id/search_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:text="@string/search"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/colorWhite"
+                android:background="@color/transparent"
+                style="?android:attr/borderlessButtonStyle"/>
+
+        </LinearLayout>
 
         <ListView
             android:id="@+id/listView_more"
@@ -30,7 +55,56 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8">
 
+            <Button
+                android:id="@+id/button_start"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:layout_weight="1"
+                android:text="@string/play"
+                android:textSize="20sp"
+                android:onClick="click"
+                style="?android:attr/borderlessButtonStyle"/>
+
+            <Button
+                android:id="@+id/button_pause"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:layout_weight="1"
+                android:text="@string/pause"
+                android:textSize="20sp"
+                android:onClick="click"
+                style="?android:attr/borderlessButtonStyle"/>
+
+            <Button
+                android:id="@+id/button_last"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:layout_weight="1"
+                android:text="@string/previous"
+                android:textSize="20sp"
+                android:onClick="click"
+                style="?android:attr/borderlessButtonStyle"/>
+
+            <Button
+                android:id="@+id/button_next"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:layout_weight="1"
+                android:text="@string/next"
+                android:textSize="20sp"
+                android:onClick="click"
+                style="?android:attr/borderlessButtonStyle"/>
+
+        </LinearLayout>
     </LinearLayout>
 
     <RelativeLayout

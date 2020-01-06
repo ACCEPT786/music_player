@@ -2,61 +2,63 @@ package com.example.music_player;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Build;
-import android.os.Bundle;
-import java.io.IOException;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.example.music_player.Content_Utils.Content_Adapter;
+import com.example.music_player.Content_Utils.Content_Model;
 import com.example.music_player.Music.Music;
 import com.example.music_player.Music.MusicAdapter;
 import com.example.music_player.Music.MusicUtil;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private List<Music> lists;
     private MusicAdapter adapter;
-    private ListView listView;
+    private List<Content_Model> mList = new ArrayList<>();
+    private ListView mListView, listView_more;
+    private Button more, search_more;
+    private DrawerLayout  drawerLayout;
+    private SeekBar seek_more;
     private MediaPlayer mediaPlayer;
-    private SeekBar seek;
-    private Timer timer = new Timer();
+    private Timer timer= new Timer();
     private int index = 0;
-    private Button search;
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.musicplayer);
+        setContentView(R.layout.mulit_menu);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
 
-        search = findViewById(R.id.search);
-        search.setOnClickListener(view ->
+        mediaPlayer = new MediaPlayer();
+        drawerLayout = findViewById(R.id.DrawerLayout);
+
+        more = findViewById(R.id.more);
+        more.setOnClickListener(view ->
+                drawerLayout.openDrawer(Gravity.RIGHT));
+
+        search_more = findViewById(R.id.search_more);
+        search_more.setOnClickListener(view ->
                 startActivity(new Intent(com.example.music_player.MainActivity.this, search_view.class)));
 
-        MusicUtil musicUtil = new MusicUtil();
-        seek = findViewById(R.id.seek);
-        listView = findViewById(R.id.listView);
-        lists = musicUtil.getMusic(this);
+        listView_more = findViewById(R.id.listView_more);
+        listView_more.setTextFilterEnabled(true);
+        listView_more.setBackgroundColor(this.getResources().getColor(R.color.transparent));
 
-        seek.setProgress(0);
-        seek.setBackgroundColor(this.getResources().getColor(R.color.transparent));
-        mediaPlayer = new MediaPlayer();
-        listView.setTextFilterEnabled(true);
-        listView.setBackgroundColor(this.getResources().getColor(R.color.transparent));
-        seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seek_more = findViewById(R.id.seek_more);
+        seek_more.setProgress(0);
+        seek_more.setBackgroundColor(this.getResources().getColor(R.color.transparent));
+        seek_more.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 if (b){
@@ -75,15 +77,17 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        MusicUtil musicUtil = new MusicUtil();
+        lists = musicUtil.getMusic(this);
         Log.i(TAG, "" + lists);
         adapter = new MusicAdapter(lists, this);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+        listView_more.setAdapter(adapter);
+        listView_more.setOnItemClickListener((adapterView, view, i, l) -> {
             index = i;
-            seek.setProgress(0);
+            seek_more.setProgress(0);
             mediaPlayer.reset();
             try {
-                seek.setMax(Integer.parseInt(lists.get(i).getDuration()));
+                seek_more.setMax(Integer.parseInt(lists.get(i).getDuration()));
                 mediaPlayer.setDataSource(lists.get(i).getData());
                 mediaPlayer.prepare();
                 mediaPlayer.start();
@@ -94,10 +98,23 @@ public class MainActivity extends AppCompatActivity{
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                seek.setProgress(mediaPlayer.getCurrentPosition());
+                seek_more.setProgress(mediaPlayer.getCurrentPosition());
             }
         },0,1000);
 
+        initData();
+        mListView = findViewById(R.id.right_listview);
+        Content_Adapter adapter = new Content_Adapter(this,mList);
+        mListView.setAdapter(adapter);
+    }
+
+    private void initData() {
+        mList.add(new Content_Model(R.drawable.user_icon, "新闻", 1));
+        mList.add(new Content_Model(R.drawable.user_icon, "订阅", 2));
+        mList.add(new Content_Model(R.drawable.user_icon, "图片", 3));
+        mList.add(new Content_Model(R.drawable.user_icon, "视频", 4));
+        mList.add(new Content_Model(R.drawable.user_icon, "跟帖", 5));
+        mList.add(new Content_Model(R.drawable.user_icon, "投票", 6));
     }
 
     public void click(View view) {

@@ -21,10 +21,9 @@
         </activity>
         <activity android:name=".register" />
         <activity android:name=".find_psw_back" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".search_view" />
         <activity android:name=".activity_login" />
-        <activity android:name=".Right_drawer" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
