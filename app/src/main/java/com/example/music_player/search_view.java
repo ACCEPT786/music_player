@@ -26,8 +26,6 @@ public class search_view extends AppCompatActivity {
     private Timer timer = new Timer();
     private String ID;
     private SeekBar seek;
-    private int i;
-    private int index = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +71,7 @@ public class search_view extends AppCompatActivity {
         lists = musicUtil.getMusic(this);
         int size = lists.size();
         String[] title = new String[size];
-        for (i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             title[i] = lists.get(i).getTitle() + i;
         }
 
@@ -94,7 +92,7 @@ public class search_view extends AppCompatActivity {
                         TextView selected = view.findViewById(android.R.id.text1);
                         String info = selected.getText().toString();
                         String[] array1 = info.split("[\\D]+");
-                        String final_sequence = array1[array1.length-1];
+                        String final_sequence = array1[array1.length - 1];
                         int sequence = Integer.parseInt(final_sequence);
                         seek.setProgress(0);
                         mediaPlayer.reset();
@@ -115,7 +113,6 @@ public class search_view extends AppCompatActivity {
                     },0,1000);
                 }else{
                     listView.clearTextFilter();
-
                 }
                 return true;
             }

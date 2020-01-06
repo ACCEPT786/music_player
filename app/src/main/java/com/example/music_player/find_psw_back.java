@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class find_psw_back extends AppCompatActivity {
-    private TextView tv_main_title;//标题
+    private TextView tv_main_title;
     private TextView tv_back;
     private Button btn_find_back_pwd;
     private String userName, spPsw, init_pwd;
