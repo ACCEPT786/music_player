@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_vertical|end"
-                android:text="@string/search"
+                android:text="@string/search_local"
                 android:layout_marginRight="10dp"
                 android:layout_marginEnd="10dp"
                 android:textColor="@color/colorWhite"
