@@ -9,14 +9,16 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical">
-    <include layout="@layout/main_title_bar"></include><!--引入标题栏-->
+
+    <include layout="@layout/main_title_bar"></include>
+
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
         android:src="@drawable/password"/>
-    <!--三个编辑框-->
+
     <EditText
         android:id="@+id/et_user_name"
         android:layout_width="fill_parent"
@@ -27,6 +29,7 @@
         android:layout_marginTop="35dp"
         android:background="@color/colorWhite"
         android:drawableLeft="@drawable/user_icon"
+        android:drawableStart="@drawable/user_icon"
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
         android:hint="@string/enter_username"
@@ -47,4 +50,5 @@
         android:text="@string/find_back_pwd"
         android:textColor="@android:color/white"
         android:textSize="18sp"/>
+
 </LinearLayout>
