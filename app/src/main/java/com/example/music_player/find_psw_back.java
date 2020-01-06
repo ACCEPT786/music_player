@@ -30,9 +30,11 @@ public class find_psw_back extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
+
         tv_back = findViewById(R.id.tv_back);
         tv_back.setOnClickListener(view ->
                 find_psw_back.this.finish());
+
         btn_find_back_pwd = findViewById(R.id.btn_find_back_pwd);
         btn_find_back_pwd.setOnClickListener(view ->
                 onClick());

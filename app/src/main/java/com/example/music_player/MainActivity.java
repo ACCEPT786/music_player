@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
 
-        Button search = findViewById(R.id.search);
+        search = findViewById(R.id.search);
         search.setOnClickListener(view ->
                 startActivity(new Intent(com.example.music_player.MainActivity.this, search_view.class)));
 
@@ -75,20 +75,17 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "" + lists);
         adapter = new MusicAdapter(lists, this);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                index = i;
-                seek.setProgress(0);
-                mediaPlayer.reset();
-                try {
-                    seek.setMax(Integer.parseInt(lists.get(i).getDuration()));
-                    mediaPlayer.setDataSource(lists.get(i).getData());
-                    mediaPlayer.prepare();
-                    mediaPlayer.start();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            index = i;
+            seek.setProgress(0);
+            mediaPlayer.reset();
+            try {
+                seek.setMax(Integer.parseInt(lists.get(i).getDuration()));
+                mediaPlayer.setDataSource(lists.get(i).getData());
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
         timer.schedule(new TimerTask() {
