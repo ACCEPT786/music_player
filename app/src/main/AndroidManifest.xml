@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:launchMode="singleTask">
         <activity
             android:name=".SplashActivity">
             <intent-filter>
@@ -23,7 +24,8 @@
         <activity android:name=".find_psw_back" />
         <activity android:name=".search_view" />
         <activity android:name=".activity_login" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+                  android:launchMode="singleTask"/>
     </application>
 
 </manifest>

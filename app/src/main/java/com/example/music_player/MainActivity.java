@@ -13,9 +13,6 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.music_player.Content_Utils.Content_Adapter;
 import com.example.music_player.Content_Utils.Content_Model;
@@ -116,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
-                    //模拟两条数据
 
                     case 0://返回登陆
                         //跳转至登陆界面
