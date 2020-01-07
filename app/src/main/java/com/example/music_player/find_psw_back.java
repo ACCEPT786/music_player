@@ -46,7 +46,7 @@ public class find_psw_back extends AppCompatActivity {
         userName = et_user_name.getText().toString().trim();
         spPsw = readPsw(userName);
         init_pwd = MD5Utils.Decryption(spPsw);
-        Toast.makeText(find_psw_back.this, "初始密码为：" + init_pwd, Toast.LENGTH_SHORT).show();
+        Toast.makeText(find_psw_back.this, "初始密码为：" + init_pwd, Toast.LENGTH_LONG).show();
     }
 
     private String readPsw(String userName){

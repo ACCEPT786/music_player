@@ -20,7 +20,6 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 public class activity_login extends AppCompatActivity {
     private TextView tv_main_title;
-    private TextView tv_back;
     private Button btn_login, tv_register, tv_find_psw;
     private String userName,psw,spPsw;
     private EditText et_user_name,et_psw;
@@ -39,19 +38,12 @@ public class activity_login extends AppCompatActivity {
 
     private void init() {
 
-        tv_main_title = findViewById(R.id.tv_main_title);
-        tv_main_title.setText("登陆");
-        tv_main_title.setTextColor(this.getResources().getColor(R.color.colorBlack));
-        tv_back = findViewById(R.id.tv_back);
-
         tv_register = findViewById(R.id.tv_register);
         tv_find_psw = findViewById(R.id.tv_find_psw);
         btn_login = findViewById(R.id.btn_login);
         et_user_name = findViewById(R.id.et_user_name);
         et_psw = findViewById(R.id.et_psw);
 
-        tv_back.setOnClickListener(view ->
-            activity_login.this.finish());
 
         tv_register.setOnClickListener(view ->
             startActivity(new Intent(com.example.music_player.activity_login.this, register.class)));

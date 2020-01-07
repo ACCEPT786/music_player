@@ -7,11 +7,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.music_player.Content_Utils.Content_Adapter;
 import com.example.music_player.Content_Utils.Content_Model;
 import com.example.music_player.Music.Music;
@@ -106,10 +111,48 @@ public class MainActivity extends AppCompatActivity {
         mListView = findViewById(R.id.right_listview);
         Content_Adapter adapter = new Content_Adapter(this,mList);
         mListView.setAdapter(adapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    //模拟两条数据
+
+                    case 0://返回登陆
+                        //跳转至登陆界面
+                        activity_change();
+                        break;
+
+                    default:
+                        break;
+                }
+                //点击任一项item项，都关闭左侧菜单
+                drawerLayout.closeDrawer(Gravity.RIGHT);
+            }
+        });
     }
 
+    public void activity_change(){
+        startActivity(new Intent(com.example.music_player.MainActivity.this, activity_login.class));
+    }
+
+//
+//    public void replaceFragment(Fragment fragment){
+//        //1、拿到FragmentManager管理器
+//        FragmentManager manager = getSupportFragmentManager();
+//
+//        //2、获取事物
+//        FragmentTransaction transaction = manager.beginTransaction();
+//
+//        //3、fragment的替换
+//        transaction.replace(R.id.content,fragment);
+//
+//        //4、提交事物
+//        transaction.commit();
+//    }
+
     private void initData() {
-        mList.add(new Content_Model(R.drawable.user_icon, "新闻", 1));
+        mList.add(new Content_Model(R.drawable.user_icon, "返回登陆", 1));
         mList.add(new Content_Model(R.drawable.user_icon, "订阅", 2));
         mList.add(new Content_Model(R.drawable.user_icon, "图片", 3));
         mList.add(new Content_Model(R.drawable.user_icon, "视频", 4));

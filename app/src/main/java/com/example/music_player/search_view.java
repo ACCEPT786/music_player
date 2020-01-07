@@ -3,8 +3,6 @@ package com.example.music_player;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -40,7 +38,7 @@ public class search_view extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         tv_main_title = findViewById(R.id.tv_main_title);
-        tv_main_title.setText(this.getResources().getText(R.string.search));
+        tv_main_title.setText(this.getResources().getText(R.string.search_local));
 
         listView = findViewById(R.id.lv);
         listView.setTextFilterEnabled(true);
@@ -78,19 +76,16 @@ public class search_view extends AppCompatActivity {
         lists = musicUtil.getMusic(this);
         musicAdapter = new MusicAdapter(lists, this);
         listView.setAdapter(musicAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                seek.setProgress(0);
-                mediaPlayer.reset();
-                try {
-                    seek.setMax(Integer.parseInt(lists.get(i).getDuration()));
-                    mediaPlayer.setDataSource(lists.get(i).getData());
-                    mediaPlayer.prepare();
-                    mediaPlayer.start();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        listView.setOnItemClickListener((adapterView, view, i, l) ->{
+            seek.setProgress(0);
+            mediaPlayer.reset();
+            try {
+                seek.setMax(Integer.parseInt(lists.get(i).getDuration()));
+                mediaPlayer.setDataSource(lists.get(i).getData());
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
         timer.schedule(new TimerTask() {
