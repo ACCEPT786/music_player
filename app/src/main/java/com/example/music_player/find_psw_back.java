@@ -28,10 +28,6 @@ public class find_psw_back extends AppCompatActivity {
         tv_main_title = findViewById(R.id.tv_main_title);
         tv_main_title.setText("找回密码");
         tv_main_title.setTextColor(this.getResources().getColor(R.color.colorBlack));
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
 
         tv_back = findViewById(R.id.tv_back);
         tv_back.setOnClickListener(view ->

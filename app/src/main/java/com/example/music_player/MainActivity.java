@@ -19,6 +19,7 @@ import com.example.music_player.Content_Utils.Content_Model;
 import com.example.music_player.Music.Music;
 import com.example.music_player.Music.MusicAdapter;
 import com.example.music_player.Music.MusicUtil;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,11 +119,9 @@ public class MainActivity extends AppCompatActivity {
                         //跳转至登陆界面
                         activity_change();
                         break;
-
                     default:
                         break;
                 }
-                //点击任一项item项，都关闭左侧菜单
                 drawerLayout.closeDrawer(Gravity.RIGHT);
             }
         });
@@ -149,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
         mList.add(new Content_Model(R.drawable.user_icon, "返回登陆", 1));
-        mList.add(new Content_Model(R.drawable.user_icon, "订阅", 2));
+        mList.add(new Content_Model(R.drawable.user_icon, "按歌手分类", 2));
         mList.add(new Content_Model(R.drawable.user_icon, "图片", 3));
         mList.add(new Content_Model(R.drawable.user_icon, "视频", 4));
         mList.add(new Content_Model(R.drawable.user_icon, "跟帖", 5));
